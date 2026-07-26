@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Recorder</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🛡️ AI Emergency Evidence Vault
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="evidence.html">Evidence Vault</a>
+        <a href="login.html">Logout</a>
+
+    </nav>
+
+</header>
+
+<section class="recorder">
+
+    <h1>Emergency Recorder</h1>
+
+    <p>
+        Record video and audio securely during emergencies.
+    </p>
+
+    <div class="camera-box">
+
+        <video id="preview" autoplay muted></video>
+
+    </div>
+
+    <div class="timer">
+
+        Recording Time:
+        <span id="timer">00:00</span>
+
+    </div>
+
+    <div class="record-buttons">
+
+        <button id="startBtn">▶ Start Recording</button>
+
+        <button id="stopBtn" disabled>■ Stop Recording</button>
+
+    </div>
+
+    <div id="status">
+
+        Camera not started
+
+    </div>
+
+</section>
+
+<script src="js/recorder.js"></script>
+
+</body>
+</html>
