@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Witness Vault</title>
+
+    <link rel="stylesheet" href="css/upload.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <h2>
+        <i class="fa-solid fa-shield-halved"></i>
+        Digital Witness Vault
+    </h2>
+
+    <div>
+
+        <span id="welcome"></span>
+
+        <button id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+<div class="container">
+
+    <!-- USER -->
+
+    <div class="card">
+
+        <h2>User Information</h2>
+
+        <p>
+            <strong>Name :</strong>
+            <span id="username"></span>
+        </p>
+
+        <p>
+            <strong>Date :</strong>
+            <span id="date"></span>
+        </p>
+
+        <p>
+            <strong>Time :</strong>
+            <span id="time"></span>
+        </p>
+
+    </div>
+
+    <!-- UPLOAD -->
+
+    <div class="card">
+
+        <h2>Upload Evidence</h2>
+
+        <div id="dropArea" class="drop-area">
+
+            <i class="fa-solid fa-cloud-arrow-up fa-3x"></i>
+
+            <p>Drag & Drop Video Here</p>
+
+            <button id="chooseBtn" type="button">
+                Choose Video
+            </button>
+
+            <input
+                type="file"
+                id="videoFile"
+                accept="video/*"
+                hidden
+            >
+
+            <p id="fileName">No file selected</p>
+
+        </div>
+
+        <video
+            id="preview"
+            controls
+            style="display:none; width:100%; margin-top:20px;">
+        </video>
+
+        <div class="progress-container">
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+            </div>
+
+        </div>
+
+        <button id="uploadBtn" type="button">
+            Upload Evidence
+        </button>
+
+    </div>
+
+    <!-- SUMMARY -->
+
+    <div class="card">
+
+        <h2>Evidence Summary</h2>
+
+        <div id="summary">
+
+            No evidence uploaded yet.
+
+        </div>
+
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <div class="dashboard">
+
+        <div class="stat-card">
+
+            <h3 id="totalFiles">0</h3>
+
+            <p>Total Files</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="verifiedFiles">0</h3>
+
+            <p>Uploaded Files</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="storageUsed">0 MB</h3>
+
+            <p>Encrypted Storage</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>100%</h3>
+
+            <p>Encryption</p>
+
+        </div>
+
+    </div>
+
+    <!-- RECENT UPLOADS -->
+
+    <div class="card">
+
+        <h2>Recent Uploads</h2>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Filename</th>
+
+                <th>Time</th>
+
+                <th>Status</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="recentTable">
+
+            <tr>
+
+                <td colspan="4">
+
+                    No uploads yet
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- Loading -->
+
+<div
+    id="loadingOverlay"
+    style="display:none;"
+    class="loading-overlay">
+
+    <div class="loader"></div>
+
+</div>
+
+<!-- Toast -->
+
+<div id="toast" class="toast">
+
+    <span id="toastMessage"></span>
+
+</div>
+
+<!-- JavaScript -->
+
+<script src="js/upload.js"></script>
+
+</body>
+</html>

@@ -1,18 +1,16 @@
 """
 Application factory for the AI-Powered Emergency Evidence Vault backend.
-
-Keeping app-creation here (separate from main.py) means:
-  - main.py stays a thin "run the server" entry point
-  - the app instance can be imported directly by tests or by
-    `uvicorn app.server:app` without going through main.py
 """
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routes import health
 from app.routes import upload
+from app.routes import auth
+from app.routes.dashboard import router as dashboard_router
+
+from database.database import init_db
 
 
 def create_app() -> FastAPI:
@@ -26,9 +24,6 @@ def create_app() -> FastAPI:
         version="0.1.0",
     )
 
-    # CORS: the frontend (plain HTML/CSS/JS) is served from a different
-    # origin/port than the backend, so browsers will block requests
-    # unless we explicitly allow them here.
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.ALLOWED_ORIGINS,
@@ -36,12 +31,15 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    app.include_router(dashboard_router)
 
-    # Routers — each phase will add its own router here.
+    # Create database tables automatically
+    init_db()
+
+    # Routes
     app.include_router(health.router)
-    app.include_router(
-    upload.router
-)
+    app.include_router(upload.router)
+    app.include_router(auth.router)
 
     @app.get("/")
     def root():

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
 
     <div class="auth-card">
 
-        <h2>Welcome Back</h2>
+        <h2>Login</h2>
 
         <p>Login to access your secure evidence vault.</p>
 
@@ -35,12 +36,14 @@
 
             <input
                 type="email"
+                id="email"
                 placeholder="Email Address"
                 required
             >
 
             <input
                 type="password"
+                id="password"
                 placeholder="Password"
                 required
             >
@@ -52,20 +55,15 @@
         </form>
 
         <p class="auth-link">
-
             Don't have an account?
-
-            <a href="register.html">
-
-                Register
-
-            </a>
-
+            <a href="register.html">Register</a>
         </p>
 
     </div>
 
 </section>
+
+<script src="js/login.js"></script>
 
 </body>
 </html>
