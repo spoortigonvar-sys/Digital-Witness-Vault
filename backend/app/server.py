@@ -9,6 +9,7 @@ from app.routes import health
 from app.routes import upload
 from app.routes import auth
 from app.routes.dashboard import router as dashboard_router
+from app.routes import verify
 
 from database.database import init_db
 
@@ -32,6 +33,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(dashboard_router)
+    app.include_router(verify.router)
 
     # Create database tables automatically
     init_db()

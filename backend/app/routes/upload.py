@@ -1,9 +1,9 @@
 from fastapi import APIRouter, UploadFile, File
 import os
-import hashlib
+
 import uuid
 from datetime import datetime
-
+from hashing.sha256 import generate_sha256
 from encryption.encryption import encrypt_file
 from database.database import insert_evidence
 
@@ -28,7 +28,8 @@ async def upload_video(file: UploadFile = File(...)):
         f.write(content)
 
     # Generate SHA-256 hash
-    sha256_hash = hashlib.sha256(content).hexdigest()
+    # Generate SHA-256 hash
+sha256_hash = generate_sha256(file_path)
 
     # Encrypt file
     encrypted_path = os.path.join(

@@ -111,3 +111,19 @@ def login_user(email, password):
     conn.close()
 
     return user
+
+def get_evidence_by_id(evidence_id):
+    conn = get_connection()
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM evidence WHERE evidence_id = ?",
+        (evidence_id,)
+    )
+
+    evidence = cursor.fetchone()
+
+    conn.close()
+
+    return evidence
